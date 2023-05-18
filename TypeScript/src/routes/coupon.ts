@@ -4,6 +4,6 @@ import { CouponController } from '../controllers/coupon';
 const app: Express = express();
 
 app.post('/', CouponController.selectItems);
-app.get('/', CouponController.mostRequestedItems);
+app.put('/', CouponController.mostRequestedItems);
 
 module.exports = app;
