@@ -21,14 +21,20 @@ db.sequelize.authenticate()
     });
 
 function invalidPathHandler(request: express.Request, response: express.Response, next: express.NextFunction): void {
+    console.log('IN', request.method)
     response.status(404).send({ msg: 'page not found' });
+}
+
+function middleware(request: express.Request, response: express.Response, next: express.NextFunction): void {
+    console.log('MIDDLEWARE', request.method)
+    next();
 }
 
 app.use(cors());
 app.use(express.json());
 
 // Global routes config
-app.use('/api', require('./routes/routes'));
+app.use('/api', middleware, require('./routes/routes'));
 app.use(invalidPathHandler)
 
 const httpServer: http.Server = app.listen(port, () => {
