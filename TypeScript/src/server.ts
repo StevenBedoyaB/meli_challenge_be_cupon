@@ -20,18 +20,12 @@ db.sequelize.authenticate()
         console.log('SQLite3 connection error', err);
     });
 
-function invalidPathHandler(request: express.Request, response: express.Response, next: express.NextFunction): void {
-    console.log('IN', request.method)
-    response.status(404).send({ msg: 'page not found' });
-}
-
-function middleware(request: express.Request, response: express.Response, next: express.NextFunction): void {
-    console.log('MIDDLEWARE', request.method)
-    next();
-}
-
 function ping(request: express.Request, response: express.Response, next: express.NextFunction): void {
     response.status(200).send({ msg: 'it is alive' });
+}
+
+function invalidPathHandler(request: express.Request, response: express.Response, next: express.NextFunction): void {
+    response.status(404).send({ msg: 'page not found' });
 }
 
 app.use(cors());
@@ -39,8 +33,8 @@ app.use(express.json());
 
 // Global routes config
 app.get('/', ping);
-app.use('/api', middleware, require('./routes/routes'));
-app.use(invalidPathHandler)
+app.use('/api', require('./routes/routes'));
+app.use(invalidPathHandler);
 
 const httpServer: http.Server = app.listen(port, () => {
     console.log('HTTP REST API Server running at http://localhost:' + httpServer.address()['port']);
