@@ -3,7 +3,7 @@ import { CouponController } from '../controllers/coupon';
 
 const app: Express = express();
 
-app.post('/', CouponController.selectItems);
-app.put('/', CouponController.mostRequestedItems);
+app.get('/', CouponController.selectItems);                 // app.post('/', CouponController.selectItems);
+app.get('/most-req', CouponController.mostRequestedItems);  // app.get('/', CouponController.mostRequestedItems);
 
 module.exports = app;

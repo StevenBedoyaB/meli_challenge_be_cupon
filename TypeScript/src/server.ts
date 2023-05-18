@@ -21,8 +21,6 @@ db.sequelize.authenticate()
     });
 
 function invalidPathHandler(request: express.Request, response: express.Response, next: express.NextFunction): void {
-    console.error('ISSUE WITH METHOD - REQUEST', request)
-    console.error('ISSUE WITH METHOD - RESPONSE', response)
     response.status(404).send({ msg: 'page not found' });
 }
 
