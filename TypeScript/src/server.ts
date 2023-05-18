@@ -24,9 +24,7 @@ function invalidPathHandler(request: express.Request, response: express.Response
     response.status(404).send({ msg: 'page not found' });
 }
 
-app.use(cors({
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}));
+app.use(cors());
 app.use(express.json());
 
 // Global routes config
