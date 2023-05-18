@@ -9,6 +9,7 @@ export class CouponController {
     }
 
     public static async selectItems(request: express.Request, response: express.Response, next: express.NextFunction): Promise<void> {
+        console.log('POST - selectItems');
         if ( !('item_ids' in request.body) ) {
             response.status(400).send({ error: '"item_ids" missing' });
             return;
@@ -127,6 +128,7 @@ export class CouponController {
     };
 
     public static async mostRequestedItems(request: express.Request, response: express.Response, next: express.NextFunction): Promise<void> {
+        console.log('GET - mostRequestedItems');
         Favorites.findAll({ order: [ ['freq', 'DESC'] ], limit: 5 })
             .then((favoritesRes: Model[]) => {
                 const itemIdsFreq: object[] = [];
