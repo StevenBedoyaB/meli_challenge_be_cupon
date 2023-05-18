@@ -30,10 +30,15 @@ function middleware(request: express.Request, response: express.Response, next: 
     next();
 }
 
+function ping(request: express.Request, response: express.Response, next: express.NextFunction): void {
+    response.status(200).send({ msg: 'it is alive' });
+}
+
 app.use(cors());
 app.use(express.json());
 
 // Global routes config
+app.get('/', ping);
 app.use('/api', middleware, require('./routes/routes'));
 app.use(invalidPathHandler)
 
