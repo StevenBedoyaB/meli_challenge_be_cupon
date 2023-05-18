@@ -25,7 +25,7 @@ function ping(request: express.Request, response: express.Response, next: expres
 }
 
 function invalidPathHandler(request: express.Request, response: express.Response, next: express.NextFunction): void {
-    response.status(404).send({ msg: 'page not found' });
+    response.status(404).send({ error: 'page not found' });
 }
 
 app.use(cors());
