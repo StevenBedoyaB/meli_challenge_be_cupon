@@ -20,7 +20,7 @@ It's recommended to install Node Version Manager to handle the [NodeJS](https://
 
 
 ### Dependency Management
-* [npm](https://www.npmjs.com/): **[NodeJS](https://nodejs.org/)** package management. (Installed automatically with NodeJS)
+* [npm](https://www.npmjs.com/): **[NodeJS](https://nodejs.org/)** package management. (Installed automatically with NodeJS).
 
 
 ----------
@@ -71,7 +71,7 @@ to start the server (for dev purposes).
 ----------
 
 
-# How To Use
+### How To Use
 The server has 3 endpoints.
 ```
 PROD        =>  baseUrl: https://melichallengebecupon-production.up.railway.app
